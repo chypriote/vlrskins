@@ -59,7 +59,7 @@
 		<div class="weapon-grid-cell">
 			<weapons-grid-header :title="'melee'" />
 			<div class="weapon-container">
-				<weapons-grid-link :name="'Knife'" :slug="'knife'" />
+				<weapons-grid-link :name="'Knife'" :slug="'melee'" />
 			</div>
 		</div>
 	</div>

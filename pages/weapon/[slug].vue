@@ -14,51 +14,31 @@ const skins = strapi.data
 </script>
 
 <template>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-			<aside>
-				<div class="filters">
+			<aside class="col col-12 col-lg-3">
+				<div class="filters col">
 
 				</div>
 			</aside>
-			<section>
-				<div class="main">
-					<div class="query">
+			<section class="col col-12 col-lg-9">
+				<div class="main row">
+					<div class="query col">
 						<input type="text" placeholder="Type something" />
 					</div>
 				</div>
-				<skins-grid :skins="skins" />
+				<skins-grid class="row" :skins="skins" />
 			</section>
 		</div>
 	</div>
 </template>
 
 <style scoped>
-.container {
-	width: 100%;
-	margin: 0 auto;
-	min-height: 100vh;
-}
-.row {
-	display: flex;
-	flex-wrap: wrap;
-}
-aside {
-	position: relative;
-	flex: 0 0 25%;
-	max-width: 25%;
-}
-section {
-	flex: 0 0 75%;
-	max-width: 75%;
-}
 .filters {
 	background-color: red;
-	padding: 1rem;
 	border-right: 1px solid #dee2e6;
 }
 .main {
-	padding: 0 1rem;
 	background-color: darkblue;
 }
 .query {

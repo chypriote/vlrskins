@@ -19,6 +19,6 @@ export default defineNuxtConfig({
 		plugins: {'postcss-nested': {}},
 	},
 	css: [
-		'normalize.css'
+		'reset-css', 'shoelace-css/dist/shoelace.css', '~/assets/app.css'
 	]
 })

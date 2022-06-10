@@ -1,5 +1,5 @@
 import { Weapon } from './Weapon'
-import { UploadedPicture } from './types'
+import { ApiItem, UploadedPicture } from './types'
 import { SkinUpgrade } from './SkinUpgrade'
 import { Collection } from './Collection'
 
@@ -25,7 +25,7 @@ export interface Skin {
 	rarity: Rarity
 	unlockable: boolean
 	available: boolean
-	picture: UploadedPicture
+	picture: ApiItem<UploadedPicture>
 	skin_upgrades: SkinUpgrade[]
 	collection: Collection
 }
