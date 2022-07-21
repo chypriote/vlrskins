@@ -3,6 +3,7 @@ import { useRoute } from '#app'
 import { useStrapiClient } from '#imports'
 import { Skin } from '~/types/Skin'
 import { ApiResponse } from '~/types/types'
+import { Weapon } from '~/types/Weapon'
 
 const name = "WeaponPage"
 const route = useRoute()
@@ -11,17 +12,26 @@ const { slug } = route.params
 const client = useStrapiClient()
 const strapi = await client<ApiResponse<Skin>>('/skins', { params: { "filters[weapon][slug][$eq]": slug, populate: 'picture' }})
 const skins = strapi.data
+
+const weapons = (await client<ApiResponse<Weapon>>('/weapons')).data
 </script>
 
 <template>
 	<div class="container-fluid">
 		<div class="row">
-			<aside class="col col-12 col-lg-3">
+			<aside class="col col-12 col-lg-2">
 				<div class="filters col">
-
+					<nuxt-link
+							v-for="weapon of weapons"
+							:key="weapon.id"
+							:to="{ name: 'weapon-slug', params: {slug: weapon.attributes.slug}}"
+							class="nav-link"
+					>
+						{{ weapon.attributes.name }}
+					</nuxt-link>
 				</div>
 			</aside>
-			<section class="col col-12 col-lg-9">
+			<section class="col col-12 col-lg-10">
 				<div class="main row">
 					<div class="query col">
 						<input type="text" placeholder="Type something" />
@@ -35,8 +45,13 @@ const skins = strapi.data
 
 <style scoped>
 .filters {
-	background-color: red;
+	position: fixed;
+
 	border-right: 1px solid #dee2e6;
+	.nav-link {
+		display: block;
+		padding: .5rem 0;
+	}
 }
 .main {
 	background-color: darkblue;
